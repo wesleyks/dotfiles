@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# put sensitive or machine-specific things here
+touch ~/.zshextra
