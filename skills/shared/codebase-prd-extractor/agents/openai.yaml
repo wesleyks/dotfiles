@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codebase PRD Extractor"
+  short_description: "Extract rewrite specs from codebases"
+  default_prompt: "Use $codebase-prd-extractor to analyze this codebase and write rewrite PRDs under docs/prds/<folder>/."
