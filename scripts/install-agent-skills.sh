@@ -32,11 +32,8 @@ install_tree() {
 
   mkdir -p "$target_dir"
 
-  for entry in "$REPO_ROOT"/skills/shared/*; do
-    if [ ! -e "$entry" ]; then
-      continue
-    fi
-
+  find "$REPO_ROOT/skills/shared" -type f -name SKILL.md | sort | while IFS= read -r skill_file; do
+    entry=${skill_file%/SKILL.md}
     name=$(basename "$entry")
     link_entry "$entry" "$target_dir/$name"
   done

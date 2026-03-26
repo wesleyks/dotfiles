@@ -6,7 +6,7 @@ This repository is the source of truth for personal skills and local overrides.
 
 Shared skills:
 
-- `skills/shared/codebase-prd-extractor`
+- `skills/shared/software-development/codebase-prd-extractor`
 
 Agent-specific override locations:
 

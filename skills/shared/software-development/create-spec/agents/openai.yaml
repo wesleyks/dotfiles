@@ -1,0 +1,4 @@
+interface:
+  display_name: "Create Spec"
+  short_description: "Turn ideas into implementation specs"
+  default_prompt: "Use $create-spec to turn this rough request into a clear implementation-ready spec and identify any missing decisions first."

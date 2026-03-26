@@ -1,0 +1,4 @@
+interface:
+  display_name: "Execute Plan"
+  short_description: "Execute an approved plan; do not write it"
+  default_prompt: "Use $execute-plan to implement this approved plan in small increments. Treat the spec as authoritative for behavior, update plan-status.md as the live execution record, validate after meaningful changes, and surface blockers or deviations instead of silently replanning. This skill executes an existing plan and does not write or rewrite it."

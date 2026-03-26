@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Against Spec"
+  short_description: "Spec/plan conformance review"
+  default_prompt: "Use $review-against-spec to review this implementation against the governing spec and approved plan. Prioritize findings over summary, focus on spec gaps, regressions, missing or weak tests, unapproved plan deviations, and unresolved assumptions, distinguish confirmed defects from likely risks and open questions, and say explicitly if no major findings are present."
