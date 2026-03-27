@@ -142,8 +142,9 @@ Required behavior:
 - Assume a spec and plan already exist.
 - Read the spec from `docs/features/in-progress/<folder>/spec.md`.
 - Read the plan from `docs/features/in-progress/<folder>/plan.md`.
+- Execute exactly one plan step per invocation.
 - Update `docs/features/in-progress/<folder>/plan-status.md` during execution.
-- Once all steps are complete, move `docs/features/in-progress/<folder>/` to `docs/features/completed/<folder>/`.
+- If that invocation completes the final remaining step, move `docs/features/in-progress/<folder>/` to `docs/features/completed/<folder>/`.
 - Use the plan as an execution guide, but verify against the spec when behavior questions arise.
 - Treat `plan-status.md` as the live execution record and update it as work progresses.
 - Encourage small, sequential implementation increments with validation after meaningful changes.

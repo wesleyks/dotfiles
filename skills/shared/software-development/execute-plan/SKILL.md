@@ -5,7 +5,7 @@ description: Execute an existing approved implementation plan against a codebase
 
 # Execute Plan
 
-Implement an already-approved plan against the codebase. Work in small sequential increments, validate after meaningful changes, and keep `plan-status.md` current enough that another engineer can resume execution without re-discovery.
+Implement an already-approved plan against the codebase. Each invocation executes exactly one plan step, validates that step, and updates `plan-status.md` so another engineer can resume execution without re-discovery.
 
 ## Trigger
 
@@ -55,7 +55,7 @@ If the spec and plan disagree in a way that changes behavior or scope:
 1. Re-anchor on source documents.
    Use the user-provided folder to locate `spec.md`, `plan.md`, and `plan-status.md`. Read the current plan step, the relevant spec section, and the latest `plan-status.md` notes before editing code.
 2. Pick one bounded increment.
-   Execute one step or a clearly bounded slice of a step. Prefer increments with a concrete validation point.
+   Select exactly one plan step for this invocation. Do not continue into the next step in the same run, even if time remains.
 3. Update live status before and during work.
    Mark the active step in `plan-status.md`, note the immediate objective, and record blockers or discoveries as they appear.
 4. Implement narrowly.
@@ -65,16 +65,17 @@ If the spec and plan disagree in a way that changes behavior or scope:
 6. Record outcome.
    Move step state forward in `plan-status.md`, capture validation evidence, and note deviations, blockers, or follow-up work.
 7. Reassess the next step.
-   Confirm what remains, what is blocked, and whether the plan still holds. Surface required plan adjustments explicitly.
+   Confirm what remains, what is blocked, and whether the plan still holds. Surface required plan adjustments explicitly, but stop after the current step.
 8. Close out completed execution.
-   Once all plan steps are complete and validation is recorded, move `docs/features/in-progress/<folder>/` to `docs/features/completed/<folder>/`. Record that the move happened as part of the final execution update.
+   If this invocation completes the final remaining plan step and validation is recorded, move `docs/features/in-progress/<folder>/` to `docs/features/completed/<folder>/`. Record that the move happened as part of the final execution update.
 
 ## Rules
 
 - Treat the spec as authoritative for intended behavior; treat the plan as the execution guide.
 - Require a user-provided feature folder and resolve execution artifacts from that folder.
 - When invoked as `/execute-plan <folder>`, automatically resolve `spec.md`, `plan.md`, and `plan-status.md` from `docs/features/in-progress/<folder>/`.
-- Once all plan steps are complete, move the feature folder from `docs/features/in-progress/<folder>/` to `docs/features/completed/<folder>/`.
+- Execute exactly one plan step per invocation.
+- If that step completes the full plan, move the feature folder from `docs/features/in-progress/<folder>/` to `docs/features/completed/<folder>/`.
 - Keep `plan-status.md` current as the live execution record, not an end-of-task summary.
 - Prefer small, sequential, reviewable increments over broad multi-step edits.
 - Surface deviations from the plan explicitly before changing direction.

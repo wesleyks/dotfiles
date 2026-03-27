@@ -70,7 +70,7 @@ Use this as the canonical structure for `plan-status.md` in the user-provided fe
 
 Update `plan-status.md` at these points:
 
-- before starting a new increment
+- before starting the single step selected for this invocation
 - after a meaningful validation run
 - when a blocker or unexpected finding appears
 - when execution deviates from the plan
@@ -80,6 +80,7 @@ Update `plan-status.md` at these points:
 ## Usage Guidance
 
 - Keep only one step in `In Progress`.
+- Execute only one step per invocation, then stop after updating status and validation evidence.
 - Move steps between sections as work advances; do not duplicate the same step across sections.
 - Keep validation evidence concrete: command run, test suite, manual path checked, or artifact inspected.
 - Record partial validation honestly and note what still remains.
