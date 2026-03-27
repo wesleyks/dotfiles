@@ -19,6 +19,10 @@ Use this skill when the user wants to:
 
 ## Output
 
+Store the spec at `docs/features/in-progress/<folder>/spec.md`.
+
+Use the user-provided `<folder>` when one is given. Otherwise infer a short kebab-case folder name from the feature or project name. If revising an existing spec, reuse its current folder instead of creating a new one.
+
 Produce a structured spec artifact with these sections unless the user asks for a different shape:
 
 - problem
@@ -41,17 +45,19 @@ Within the spec, label content clearly as:
 
 1. Assess completeness.
    Identify whether the request already has enough information for a reliable spec. If not, determine the minimum missing information that blocks a trustworthy spec.
-2. Clarify before settling.
+2. Determine the artifact path.
+   Choose the `docs/features/in-progress/<folder>/spec.md` destination before drafting. Prefer a user-provided folder. Otherwise infer one from the request and keep it stable through later planning and execution work.
+3. Clarify before settling.
    When disambiguation is needed, call the user-input tool to ask focused follow-up questions for missing scope, users, constraints, success criteria, or edge cases. Prefer a small number of high-leverage questions. If the tool is unavailable in the current environment, fall back to concise plain-text questions.
-3. Offer bounded options when needed.
+4. Offer bounded options when needed.
    If ambiguity remains, propose a small set of concrete options with tradeoffs. Do not force a false choice: always leave room for the user to choose a different direction or provide their own answer.
-4. Treat the user as the authority.
+5. Treat the user as the authority.
    Replace defaults or earlier suggestions with the user's clarification whenever they provide one.
-5. Draft the spec.
-   Write the spec using concise, testable language. Separate settled facts from assumptions and unresolved questions.
-6. Tighten acceptance criteria.
+6. Draft the spec.
+   Write the spec at `docs/features/in-progress/<folder>/spec.md` using concise, testable language. Separate settled facts from assumptions and unresolved questions.
+7. Tighten acceptance criteria.
    Rewrite vague success statements into observable, testable acceptance criteria where possible.
-7. Check implementation readiness.
+8. Check implementation readiness.
    Before finishing, confirm the spec is specific enough for planning and coding, and call out any remaining uncertainty explicitly.
 
 ## Rules
@@ -59,6 +65,8 @@ Within the spec, label content clearly as:
 - Bias toward reducing ambiguity before implementation starts.
 - Do not present guesses as settled requirements.
 - If the request is too vague, do not draft a confident spec immediately. First use the user-input tool to ask for the minimum missing information needed. If the tool is unavailable, ask concise plain-text questions instead.
+- Store specs under `docs/features/in-progress/<folder>/`; do not place them in ad hoc locations.
+- Use a user-provided folder when available. Otherwise infer one from the request instead of blocking on naming.
 - When proposing options, keep the set small and include tradeoffs.
 - Preserve unresolved items instead of papering over them.
 - Prefer concise requirements and concise acceptance criteria over narrative prose.

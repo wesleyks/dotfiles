@@ -17,13 +17,27 @@ Use this skill when the user already has a spec and wants to:
 - generate a task breakdown from an approved spec
 - sequence work with dependencies and validation checkpoints
 
+Typical invocation form:
+
+- `/create-plan <folder>`
+
 Do not use this skill to write or rewrite the spec itself.
 
 ## Preconditions
 
-Before planning, confirm there is a source spec or equivalent approved requirements artifact.
+Before planning, get the target feature folder from the user and look for the governing spec there.
 
-If there is no approved spec, or the available document is too incomplete to support reliable sequencing:
+If the user invokes the skill as `/create-plan <folder>`, treat `<folder>` as the feature folder name automatically.
+
+Resolve the planning artifact set as:
+
+- `docs/features/in-progress/<folder>/spec.md`
+- `docs/features/in-progress/<folder>/plan.md`
+- `docs/features/in-progress/<folder>/plan-status.md`
+
+If the user does not provide a folder, planning is blocked until one is provided.
+
+If `spec.md` is missing from the requested folder, or the available spec is too incomplete to support reliable sequencing:
 
 - say that planning is blocked on the missing or unapproved spec
 - point the user back to spec creation or clarification work
@@ -31,10 +45,10 @@ If there is no approved spec, or the available document is too incomplete to sup
 
 ## Outputs
 
-Generate both planning artifacts:
+Generate both planning artifacts in the same folder as the source spec:
 
-- `plan.md`
-- `plan-status.md`
+- `docs/features/in-progress/<folder>/plan.md`
+- `docs/features/in-progress/<folder>/plan-status.md`
 
 `plan.md` is the execution plan.
 
@@ -43,23 +57,28 @@ Generate both planning artifacts:
 ## Workflow
 
 1. Validate the source of truth.
-   Identify the spec that governs the work. Pull out confirmed scope, explicit non-goals, constraints, acceptance criteria, and open questions that affect sequencing.
-2. Surface planning blockers early.
+   Use the user-provided folder to locate `docs/features/in-progress/<folder>/spec.md`. Pull out confirmed scope, explicit non-goals, constraints, acceptance criteria, and open questions that affect sequencing.
+2. Set the artifact location.
+   Write `plan.md` and `plan-status.md` into the same folder as `spec.md`. Do not create a separate planning folder.
+3. Surface planning blockers early.
    If the spec contains contradictions, missing decisions, or ambiguous requirements that materially change the plan, call them out explicitly. Ask targeted follow-up questions instead of silently resolving them.
-3. Derive implementation slices.
+4. Derive implementation slices.
    Break the spec into small increments that can be reviewed and validated independently. Prefer boundaries that reduce risk and make progress observable.
-4. Order the work.
+5. Order the work.
    Sequence steps by dependency, risk, and enabling value. Make prerequisites explicit. Call out work that can happen in parallel only when the dependency boundaries are clear.
-5. Separate implementation from verification.
+6. Separate implementation from verification.
    For each step, distinguish build work from validation work. Include test, review, or operational checkpoints instead of treating verification as implied.
-6. Mark deferred and unknown work.
+7. Mark deferred and unknown work.
    Keep non-goals, later-phase items, and unresolved dependencies visible. Do not bury them inside step text.
-7. Write both artifacts.
-   Produce `plan.md` and `plan-status.md`, then do a final pass to ensure every step has a completion signal and the status tracker matches the plan.
+8. Write both artifacts.
+   Produce `plan.md` and `plan-status.md` in the requested feature folder, then do a final pass to ensure every step has a completion signal and the status tracker matches the plan.
 
 ## Rules
 
 - Treat the spec as the source of truth.
+- Require a user-provided feature folder and resolve the spec from that folder.
+- When invoked as `/create-plan <folder>`, automatically resolve the spec from `docs/features/in-progress/<folder>/spec.md`.
+- Store `plan.md` and `plan-status.md` in the same folder as `spec.md`.
 - Do not silently redefine requirements, scope, or acceptance criteria.
 - When planning assumptions are necessary, label them clearly and separate them from confirmed spec statements.
 - If a requirement mismatch is found between the spec and the requested plan, surface the mismatch back to the user.

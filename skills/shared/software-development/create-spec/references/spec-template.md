@@ -1,6 +1,13 @@
 # Spec Template
 
-Use this as the canonical template when producing the final artifact. Adapt the section order only when the user's context clearly calls for it.
+Use this as the canonical template for `docs/features/in-progress/<folder>/spec.md`. Adapt the section order only when the user's context clearly calls for it.
+
+## Storage Convention
+
+- Store each spec in `docs/features/in-progress/<folder>/spec.md`.
+- Use the user-provided folder when available.
+- Otherwise infer a concise kebab-case folder from the feature or project name.
+- Reuse an existing feature folder when revising an in-progress spec.
 
 ```md
 # <Spec title>

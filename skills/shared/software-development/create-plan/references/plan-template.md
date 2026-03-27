@@ -1,6 +1,13 @@
 # Plan Template
 
-Use this as the canonical template when producing `plan.md`. Adapt the section order only when the user's context clearly requires it, but keep the same planning signals.
+Use this as the canonical template when producing `plan.md` in the user-provided feature folder. Adapt the section order only when the user's context clearly requires it, but keep the same planning signals.
+
+## Storage Convention
+
+- Require the user to provide `<folder>`.
+- Read the governing spec from `docs/features/in-progress/<folder>/spec.md`.
+- Write the plan to `docs/features/in-progress/<folder>/plan.md`.
+- Keep the plan and spec together so execution work can find the full feature packet in one place.
 
 ```md
 # <Implementation plan title>

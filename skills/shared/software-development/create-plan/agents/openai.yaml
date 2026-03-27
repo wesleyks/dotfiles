@@ -1,4 +1,4 @@
 interface:
   display_name: "Create Plan"
   short_description: "Turn an approved spec into an execution plan"
-  default_prompt: "Use $create-plan to generate plan.md and plan-status.md from this approved spec. Keep the spec as the source of truth, surface ambiguities instead of inventing requirements, and break the work into dependency-aware reviewable steps."
+  default_prompt: "Use $create-plan in the form /create-plan <folder>. Read the spec from docs/features/in-progress/<folder>/spec.md, then generate plan.md and plan-status.md in that same folder. Keep the spec as the source of truth, surface ambiguities instead of inventing requirements, and break the work into dependency-aware reviewable steps."

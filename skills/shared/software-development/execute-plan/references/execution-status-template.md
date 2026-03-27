@@ -1,6 +1,13 @@
 # Execution Status Template
 
-Use this as the canonical structure for `plan-status.md`. Keep step titles and ordering aligned with `plan.md`.
+Use this as the canonical structure for `plan-status.md` in the user-provided feature folder. Keep step titles and ordering aligned with `plan.md`.
+
+## Storage Convention
+
+- Require the user to provide `<folder>`.
+- Read execution inputs from `docs/features/in-progress/<folder>/spec.md` and `docs/features/in-progress/<folder>/plan.md`.
+- Write status to `docs/features/in-progress/<folder>/plan-status.md`.
+- After all steps are complete, move the full feature folder to `docs/features/completed/<folder>/`.
 
 ```md
 # <Implementation plan title> Status
@@ -68,6 +75,7 @@ Update `plan-status.md` at these points:
 - when a blocker or unexpected finding appears
 - when execution deviates from the plan
 - before pausing or handing work off
+- before moving the feature folder to `docs/features/completed/<folder>/`
 
 ## Usage Guidance
 
@@ -76,3 +84,4 @@ Update `plan-status.md` at these points:
 - Keep validation evidence concrete: command run, test suite, manual path checked, or artifact inspected.
 - Record partial validation honestly and note what still remains.
 - If `plan.md` changes, resync step titles and ordering immediately.
+- When execution is fully complete, make the final status update before moving the folder to `docs/features/completed/<folder>/`.

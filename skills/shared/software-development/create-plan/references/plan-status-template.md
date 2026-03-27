@@ -1,6 +1,12 @@
 # Plan Status Template
 
-Use this as the canonical template when producing `plan-status.md`. Keep it synchronized with the step titles and ordering in `plan.md`.
+Use this as the canonical template when producing `plan-status.md` in the user-provided feature folder. Keep it synchronized with the step titles and ordering in `plan.md`.
+
+## Storage Convention
+
+- Require the user to provide `<folder>`.
+- Read the governing spec from `docs/features/in-progress/<folder>/spec.md`.
+- Write status to `docs/features/in-progress/<folder>/plan-status.md`.
 
 ```md
 # <Implementation plan title> Status

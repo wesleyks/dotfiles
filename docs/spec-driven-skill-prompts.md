@@ -29,6 +29,7 @@ Design constraints:
 
 Required behavior:
 - Trigger when the user wants to define requirements, write a spec, clarify scope, or turn a vague idea into an implementation-ready document.
+- Store specs at `docs/features/in-progress/<folder>/spec.md`, where `<folder>` is user-provided when available or inferred from the request.
 - Produce a structured spec artifact with sections such as:
   - problem
   - goals
@@ -80,7 +81,11 @@ Design constraints:
 
 Required behavior:
 - Trigger when the user has a spec and wants an implementation plan, task breakdown, milestone list, or stepwise execution sequence.
+- Support invocation in the form `/create-plan <folder>`.
 - Treat the spec as the source of truth.
+- Require the user to provide a feature folder.
+- Read the spec from `docs/features/in-progress/<folder>/spec.md`.
+- Write `plan.md` and `plan-status.md` in that same folder.
 - Refuse to silently redefine requirements; instead, surface mismatches or ambiguities back to the user.
 - Produce plans that include:
   - ordered steps
@@ -133,7 +138,12 @@ Design constraints:
 
 Required behavior:
 - Trigger when the user wants the approved plan executed, implemented, or carried through step by step.
+- Support invocation in the form `/execute-plan <folder>`.
 - Assume a spec and plan already exist.
+- Read the spec from `docs/features/in-progress/<folder>/spec.md`.
+- Read the plan from `docs/features/in-progress/<folder>/plan.md`.
+- Update `docs/features/in-progress/<folder>/plan-status.md` during execution.
+- Once all steps are complete, move `docs/features/in-progress/<folder>/` to `docs/features/completed/<folder>/`.
 - Use the plan as an execution guide, but verify against the spec when behavior questions arise.
 - Treat `plan-status.md` as the live execution record and update it as work progresses.
 - Encourage small, sequential implementation increments with validation after meaningful changes.
