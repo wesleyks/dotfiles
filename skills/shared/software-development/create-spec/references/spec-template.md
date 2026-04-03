@@ -18,7 +18,7 @@ What problem is being solved? Why does it matter now?
 
 - Confirmed:
 - Assumption:
-- Open question:
+- Decision needed:
 
 ## Goals
 
@@ -34,7 +34,7 @@ What problem is being solved? Why does it matter now?
 
 - Confirmed:
 - Assumption:
-- Open question:
+- Decision needed:
 
 ## Requirements
 
@@ -43,13 +43,13 @@ List concrete behaviors, constraints, and expected outcomes. Prefer numbered req
 1. Confirmed:
 2. Confirmed:
 3. Assumption:
-4. Open question:
+4. Decision needed:
 
 ## Edge Cases
 
 - Confirmed:
 - Assumption:
-- Open question:
+- Decision needed:
 
 ## Constraints
 
@@ -57,7 +57,7 @@ Include technical, business, legal, operational, timeline, compatibility, or rol
 
 - Confirmed:
 - Assumption:
-- Open question:
+- Decision needed:
 
 ## Acceptance Criteria
 
@@ -67,18 +67,17 @@ Write concise, testable checks.
 - [ ] Criterion 2
 - [ ] Criterion 3
 
-## Open Questions
+## Deferred Decisions
 
-- Question
-- Question
+- Decision and why it is deferred (only include if user explicitly approves deferral)
 ```
 
 ## Writing Guidance
 
 - Prefer concrete statements over intent-heavy prose.
-- If a requirement is not confirmed, label it as `Assumption` or `Open question`.
+- If a requirement is not confirmed, label it as `Assumption` and resolve `Decision needed` items through user clarification before finalizing the spec.
 - Keep acceptance criteria observable. Avoid words like `intuitive`, `fast`, `simple`, or `robust` unless they are tied to measurable checks.
-- If the request is still ambiguous after clarification, include the unresolved decision in `Open Questions` instead of pretending it is settled.
+- If the request is still ambiguous after clarification, continue asking one focused question at a time. Only keep unresolved items in `Deferred Decisions` when the user explicitly agrees to defer.
 - If there are multiple viable approaches, note the chosen direction only if the user confirmed it.
 
 ## Acceptance Criteria Heuristics

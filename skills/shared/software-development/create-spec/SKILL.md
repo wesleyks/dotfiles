@@ -1,11 +1,11 @@
 ---
 name: create-spec
-description: Turn a rough request into a clear, implementation-ready spec by clarifying scope, defining requirements, surfacing ambiguity, and producing a structured document that separates confirmed requirements, assumptions, and open questions. Use when the user wants to define requirements, write a spec, clarify scope, or turn a vague idea into an implementation plan that is ready for planning and coding.
+description: Turn a rough request into a clear, implementation-ready spec by clarifying scope, defining requirements, and resolving ambiguity through direct user Q&A. Use when the user wants to define requirements, write a spec, clarify scope, or turn a vague idea into an implementation plan that is ready for planning and coding.
 ---
 
 # Create Spec
 
-Convert a vague or partial request into a high-quality implementation spec. Reduce ambiguity before coding starts. Treat user clarification as authoritative and keep a clear distinction between confirmed requirements, assumptions, and unresolved questions.
+Convert a vague or partial request into a high-quality implementation spec. Reduce ambiguity before coding starts. Treat user clarification as authoritative and actively resolve unknowns with the user instead of leaving them unresolved in the final spec when user input is available.
 
 ## Trigger
 
@@ -33,13 +33,12 @@ Produce a structured spec artifact with these sections unless the user asks for 
 - edge cases
 - constraints
 - acceptance criteria
-- open questions
 
 Within the spec, label content clearly as:
 
 - Confirmed
 - Assumption
-- Open question
+- Decision needed (temporary working label during clarification only)
 
 ## Workflow
 
@@ -48,27 +47,27 @@ Within the spec, label content clearly as:
 2. Determine the artifact path.
    Choose the `docs/features/in-progress/<folder>/spec.md` destination before drafting. Prefer a user-provided folder. Otherwise infer one from the request and keep it stable through later planning and execution work.
 3. Clarify before settling.
-   When disambiguation is needed, call the user-input tool to ask focused follow-up questions for missing scope, users, constraints, success criteria, or edge cases. Prefer a small number of high-leverage questions. If the tool is unavailable in the current environment, fall back to concise plain-text questions.
+   When disambiguation is needed, ask focused follow-up questions for missing scope, users, constraints, success criteria, or edge cases. Drive clarification one question at a time so the user can answer directly before moving to the next unresolved item. If a structured user-input tool is available, use it; otherwise ask concise plain-text questions.
 4. Offer bounded options when needed.
-   If ambiguity remains, propose a small set of concrete options with tradeoffs. Do not force a false choice: always leave room for the user to choose a different direction or provide their own answer.
+   If ambiguity remains, propose a small set of concrete options with tradeoffs. Recommendations are allowed, but do not force a false choice: always leave room for the user to choose a different direction or provide their own answer.
 5. Treat the user as the authority.
    Replace defaults or earlier suggestions with the user's clarification whenever they provide one.
 6. Draft the spec.
-   Write the spec at `docs/features/in-progress/<folder>/spec.md` using concise, testable language. Separate settled facts from assumptions and unresolved questions.
+   Write the spec at `docs/features/in-progress/<folder>/spec.md` using concise, testable language. Separate settled facts from assumptions.
 7. Tighten acceptance criteria.
    Rewrite vague success statements into observable, testable acceptance criteria where possible.
 8. Check implementation readiness.
-   Before finishing, confirm the spec is specific enough for planning and coding, and call out any remaining uncertainty explicitly.
+   Before finishing, confirm the spec is specific enough for planning and coding. If material uncertainty remains, continue the one-by-one clarification loop until resolved or until the user explicitly chooses to defer a decision.
 
 ## Rules
 
 - Bias toward reducing ambiguity before implementation starts.
 - Do not present guesses as settled requirements.
-- If the request is too vague, do not draft a confident spec immediately. First use the user-input tool to ask for the minimum missing information needed. If the tool is unavailable, ask concise plain-text questions instead.
+- If the request is too vague, do not draft a confident spec immediately. First ask for the minimum missing information needed, one unresolved item at a time.
 - Store specs under `docs/features/in-progress/<folder>/`; do not place them in ad hoc locations.
 - Use a user-provided folder when available. Otherwise infer one from the request instead of blocking on naming.
 - When proposing options, keep the set small and include tradeoffs.
-- Preserve unresolved items instead of papering over them.
+- Do not leave unresolved "open questions" in the final spec unless the user explicitly says to defer them.
 - Prefer concise requirements and concise acceptance criteria over narrative prose.
 
 ## Progressive Disclosure
@@ -80,4 +79,4 @@ Read [clarification-patterns.md](references/clarification-patterns.md) when:
 - the request is underspecified
 - you need to ask follow-up questions efficiently
 - you need to propose decision options with tradeoffs
-- you need examples of how to separate confirmed requirements, assumptions, and open questions
+- you need examples of how to separate confirmed requirements, assumptions, and decisions that still need user input
